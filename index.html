@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma de Auditoria Inteligente</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #0f172a;
+      --soft: #eef2f7;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .nav a:hover {
+      background: var(--soft);
+      color: var(--accent);
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 42px;
+      margin-top: 22px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: 34px;
+      line-height: 1.2;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    section {
+      margin-top: 18px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 34px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.25;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0 0 14px;
+      font-size: 16px;
+    }
+
+    .lead {
+      font-size: 17px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .quote {
+      border-left: 4px solid var(--accent);
+      padding-left: 16px;
+      margin-top: 18px;
+      font-size: 18px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      padding: 16px 18px;
+      background: #fff;
+      position: relative;
+      padding-left: 56px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 18px;
+      top: 16px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero, section { padding: 24px; }
+      h1 { font-size: 28px; }
+      .subtitle { font-size: 17px; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Auditoria Inteligente</div>
+      <nav class="nav">
+        <a href="#problema">Problema</a>
+        <a href="#oportunidade">Oportunidade</a>
+        <a href="#solucao">Solução</a>
+        <a href="#analises">Análises</a>
+        <a href="#publico">Público</a>
+        <a href="#modelo">Modelo</a>
+        <a href="#caminho">Caminho</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">Proposta de Produto</div>
+      <h1>Plataforma de Auditoria Inteligente para Empresas</h1>
+      <p class="subtitle">Uma camada de auditoria contínua sobre os dados da empresa, com foco em prevenção de perdas, identificação de riscos e geração de alertas relevantes para a gestão.</p>
+    </section>
+
+    <section id="problema">
+      <h2>1. Problema real</h2>
+      <p class="lead">Empresas perdem dinheiro todos os dias por falhas que muitas vezes passam despercebidas no fluxo normal da operação.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Exemplos recorrentes</h3>
+          <ul>
+            <li>pagamentos duplicados</li>
+            <li>fornecedores com aumento fora do padrão</li>
+            <li>despesas mal classificadas ou sem justificativa</li>
+            <li>concentração excessiva em poucos fornecedores</li>
+            <li>falhas processuais sem rastreabilidade</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Cenário atual</h3>
+          <ul>
+            <li>auditorias internas limitadas</li>
+            <li>auditorias externas pontuais</li>
+            <li>alto custo para acompanhar continuamente</li>
+            <li>descoberta tardia de erros e desvios</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="oportunidade">
+      <h2>2. Oportunidade</h2>
+      <p>A maior oportunidade não está em substituir ERP, BI ou consultoria. Está em criar uma camada de inteligência que monitore a empresa de forma contínua.</p>
+      <div class="quote">A proposta central é simples: não esperar seis meses ou um ano para descobrir um problema que pode ser detectado diariamente.</div>
+      <p class="footer-note">Esse ponto pode se tornar o principal pilar estratégico e comercial da plataforma.</p>
+    </section>
+
+    <section id="solucao">
+      <h2>3. Solução proposta</h2>
+      <p>A plataforma atuaria como um auditor digital contínuo, consumindo dados de diferentes fontes e transformando esse volume de informação em alertas, análises e relatórios acionáveis.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Entradas possíveis</h3>
+          <ul>
+            <li>ERPs</li>
+            <li>sistemas financeiros</li>
+            <li>sistemas bancários</li>
+            <li>planilhas</li>
+            <li>lançamentos manuais estruturados</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Papel da plataforma</h3>
+          <ul>
+            <li>centralizar dados</li>
+            <li>aplicar regras de auditoria</li>
+            <li>detectar padrões e desvios</li>
+            <li>entregar visão executiva para a gestão</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="analises">
+      <h2>4. Tipos de análise</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Financeiro e despesas</h3>
+          <ul>
+            <li>pagamentos duplicados</li>
+            <li>fracionamento suspeito</li>
+            <li>despesas fora do padrão</li>
+            <li>variações abruptas por categoria</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Fornecedores</h3>
+          <ul>
+            <li>aumento anormal de preços</li>
+            <li>dependência excessiva</li>
+            <li>desvios de comportamento</li>
+            <li>inconsistência cadastral</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Processos</h3>
+          <ul>
+            <li>falta de aprovação</li>
+            <li>quebra de fluxo esperado</li>
+            <li>operações sem rastreabilidade</li>
+            <li>eventos fora do horário padrão</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Camada de inteligência</h3>
+          <ul>
+            <li>regras determinísticas</li>
+            <li>análise estatística</li>
+            <li>detecção de anomalias</li>
+            <li>evolução futura com IA aplicada</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. Diferencial</h2>
+      <p>O diferencial principal não é visual. Não é dashboard por dashboard. É a combinação entre monitoramento contínuo, foco em governança e capacidade de transformar dados dispersos em sinal útil para a gestão.</p>
+      <div class="quote">A plataforma não seria um ERP. Também não seria uma consultoria pontual. Seria uma camada permanente de auditoria e inteligência.</div>
+    </section>
+
+    <section id="publico">
+      <h2>6. Público-alvo inicial</h2>
+      <p>Empresas com operação relevante, volume transacional recorrente e necessidade de maior controle, mas sem estrutura robusta de auditoria contínua.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Faixa inicial sugerida</h3>
+          <ul>
+            <li>empresas a partir de aproximadamente R$ 500 mil por mês de faturamento</li>
+            <li>ou empresas com complexidade operacional acima da média</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Setores com maior aderência</h3>
+          <ul>
+            <li>logística</li>
+            <li>distribuição</li>
+            <li>indústria</li>
+            <li>e-commerce</li>
+            <li>serviços empresariais</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="modelo">
+      <h2>7. Modelo de negócio</h2>
+      <p>O formato mais coerente é SaaS recorrente, com planos definidos pelo nível de análise, volume de dados, integrações e profundidade do monitoramento.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Possível estrutura</h3>
+          <ul>
+            <li>plano de entrada</li>
+            <li>plano intermediário</li>
+            <li>plano avançado</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Lógica comercial</h3>
+          <ul>
+            <li>economia gerada e risco evitado justificam ticket</li>
+            <li>potencial de retenção alto por uso contínuo</li>
+            <li>evolução por módulos e integrações</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="caminho">
+      <h2>8. Caminho de construção</h2>
+      <p>Mesmo pensando em profundidade técnica, o projeto precisa nascer com uma lógica de construção progressiva.</p>
+      <div class="steps">
+        <div class="step"><strong>Primeira fase:</strong> ingestão de dados, regras de auditoria bem definidas, alertas relevantes e visão executiva simples.</div>
+        <div class="step"><strong>Segunda fase:</strong> integrações mais robustas, histórico, automações e maior refinamento analítico.</div>
+        <div class="step"><strong>Terceira fase:</strong> detecção avançada de anomalias, modelos inteligentes e expansão para novos módulos.</div>
+      </div>
+      <p class="footer-note">A lógica é começar com algo tecnicamente sólido e comercialmente útil, sem tentar resolver tudo de uma vez.</p>
+    </section>
+
+    <section>
+      <h2>9. O que se busca nesta conversa</h2>
+      <p>O objetivo não é vender uma ideia pronta, e sim discutir viabilidade real com profundidade técnica.</p>
+      <ul>
+        <li>entender o que faz sentido construir agora</li>
+        <li>identificar riscos e complexidades reais</li>
+        <li>avaliar arquitetura e abordagem técnica</li>
+        <li>definir um caminho viável para um produto robusto</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
